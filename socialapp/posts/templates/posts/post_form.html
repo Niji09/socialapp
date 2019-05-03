@@ -1,0 +1,25 @@
+{% extends 'posts/post_base.html' %}
+{% load crispy_forms_tags %}
+
+{% block post_content %}
+	<div class="centerstage">
+
+			<div class='card bg-light m-3'>
+				<div class="card-body">
+					<div class="card-header text-center">
+						{% if not form.instance.pk %}
+							<h3>Create a new post</h3>
+						{% else %}
+							<h3>Update post</h3>
+						{% endif %}
+					</div>
+					<form method="POST" id='postForm'>
+						{% csrf_token %}
+						{{ form|crispy }}
+						<input type="submit" name="Post" class="btn btn-primary">
+					</form>
+				</div>
+			</div>
+		
+	</div>
+{% endblock %}

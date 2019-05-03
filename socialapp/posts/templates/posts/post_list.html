@@ -1,0 +1,47 @@
+{% extends 'posts/post_base.html' %}
+
+{% block prepost %}
+	<div class="col-md-4">
+		
+		{% if request.user.is_authenticated %}
+		<div class="card card-with-shadow mb-3">
+			<div class="card-body">
+				<h5 class="card-header">Joined Groups</h5>
+				<ul class="list-unstyled">
+					{% for member_group in user.user_groups.all %}
+						<li class="ml-3">
+							<a href="{% url 'groups:single' slug=member_group.group.slug %}">
+								{{ member_group.group }}
+							</a>
+						</li>
+					{% empty %}
+						<p>No group joined yet!</p>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+		{% endif %}
+		<div class="card card-with-shadow">
+			<div class="card-body">
+				<h5 class="card-header">All Groups</h5>
+				<ul class="list-unstyled">
+					{% for group in group_list  %}
+						<li class="ml-3">
+							<a href="{% url 'groups:single' slug=group.slug %}">{{ group.name }}</a>
+						</li>
+					{% empty %}
+						<p>No group created yet!</p>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</div>
+{% endblock%}
+
+{% block post_content %}
+	<div class="col-md-8">
+		{% for post in post_list %}
+			{% include 'posts/_post.html'%}
+		{% endfor %}
+	</div>
+{% endblock %}

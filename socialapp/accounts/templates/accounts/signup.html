@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+	<div class="row">
+		<div class="col-lg-3 col-md-3 col-sm-0"></div>
+		<div class="col-lg-6 col-md-6 col-sm-12">
+			<div class='card bg-light m-3'>
+				<div class="card-body">
+					<div class="card-header text-center">
+						<h3>SocialApp Registeration Form</h3>
+					</div>
+					<form method="POST" class='form'>
+						{% csrf_token %}
+						{{form|crispy}}
+						<input type="submit" class="btn btn-primary" value="Register">
+					</form>
+				</div>
+			</div>
+			
+		</div>
+		<div class="col-lg-3 col-md-3 col-sm-0"></div>
+	</div>
+		
+{% endblock %}
+

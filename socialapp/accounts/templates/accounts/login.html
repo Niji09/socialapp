@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="centerstage">
+	<div class="row">
+		<div class="col-lg-3 col-md-3 col-sm-0"></div>
+		<div class="col-lg-6 col-md-6 col-sm-12">
+			<div class='card bg-light m-3'>
+				<div class="card-body">
+					<div class="card-header text-center">
+						<h2>SocialApp Login Form</h2>
+					</div>
+					<form method="POST" class='form'>
+						{% csrf_token %}
+						{{form|crispy}}
+						<input type="submit" class="btn btn-primary" value="Login">
+						<a href="#">Forgot Password?</a> |
+						<a href="{% url 'accounts:signup' %}">Register Here</a>
+					</form>
+				</div>
+			</div>
+			
+		</div>
+		<div class="col-lg-3 col-md-3 col-sm-0"></div>
+	</div>
+</div>
+{% endblock %}
+

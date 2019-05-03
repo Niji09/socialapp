@@ -1,0 +1,6 @@
+
+	<h3>Are you sure want to delete this post?</h3>
+	<form method="POST" action="{% url 'posts:delete' pk=post.pk %}">
+		{% csrf_token %}
+		<input type="submit" value="Confirm Delete" class="btn btn-sm btn-danger">
+	</form>
